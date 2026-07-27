@@ -4,9 +4,9 @@ WORKDIR /usr/share/nginx/html
 
 RUN rm -rf ./*
 
-COPY index.html .
-COPY style.css .
+COPY code/index.html .
+COPY code/style.css .
 
 EXPOSE 80
 
-CMD ["nginx","-g","daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
