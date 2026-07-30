@@ -1,18 +1,29 @@
-apiVersion: networking.k8s.io/v1
 kind: Ingress
+apiVersion: networking.k8s.io/v1
 metadata:
-  name: webapp-ingress
-  namespace: webapp
+  name: jenkins-ingress
+  namespace: java
+
 spec:
   ingressClassName: nginx
 
   rules:
-  - host: app.local
+  - host: java.local
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
+          service:
+            name: java-service
+            port:
+              number: 80
+
+  - host: app.local
+    http:
+      paths:
+      pathtype: Prefix
+      backend:
           service:
             name: webapp-service
             port:
